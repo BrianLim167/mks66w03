@@ -2,7 +2,7 @@ from display import *
 from draw import *
 import math
 
-screen = new_screen()
+screen = PPMGrid()
 
 ##green = [0,255,0]
 ##draw_line(250,250, 250+150,250+50, screen, green)
@@ -27,5 +27,5 @@ for i in range(360):
     dy = int(length*math.sin(math.radians(i)))
     draw_line(250,250, 250+dx,250+dy, screen, color)
 
-display(screen)
-save_extension(screen, 'img.png')
+screen.display()
+screen.save_extension('img.png')
