@@ -68,52 +68,52 @@ class PPMGrid(object):
     ############################################################################
 
     def draw_line( self, x0, y0, x1, y1, color ):
-    if ( x1 < x0 ):
-        (x0, x1) = (x1, x0)
-        (y0, y1) = (y1, y0)
-    a = y1 - y0
-    b = x0 - x1
-    (x,y) = (x0,y0)
-    if ( 0 <= a <= -b ): # oct 1
-        d = 2*a + b
-        while ( x <= x1 ):
-            self.plot( color, x, y)
-            if ( d > 0 ):
+        if ( x1 < x0 ):
+            (x0, x1) = (x1, x0)
+            (y0, y1) = (y1, y0)
+        a = y1 - y0
+        b = x0 - x1
+        (x,y) = (x0,y0)
+        if ( 0 <= a <= -b ): # oct 1
+            d = 2*a + b
+            while ( x <= x1 ):
+                self.plot( color, x, y)
+                if ( d > 0 ):
+                    y += 1
+                    d += 2*b
+                x += 1
+                d += 2*a
+            return
+        if ( -b <= a ): # oct 2
+            d = a + 2*b
+            while ( y <= y1 ):
+                self.plot( color, x, y)
+                if ( d < 0 ):
+                    x += 1
+                    d += 2*a
                 y += 1
                 d += 2*b
-            x += 1
-            d += 2*a
-        return
-    if ( -b <= a ): # oct 2
-        d = a + 2*b
-        while ( y <= y1 ):
-            self.plot( color, x, y)
-            if ( d < 0 ):
+            return
+        if ( b <= a <= 0 ): # oct 8
+            d = 2*a - b
+            while ( x <= x1 ):
+                self.plot( color, x, y)
+                if ( d < 0 ):
+                    y -= 1
+                    d -= 2*b
                 x += 1
                 d += 2*a
-            y += 1
-            d += 2*b
-        return
-    if ( b <= a <= 0 ): # oct 8
-        d = 2*a - b
-        while ( x <= x1 ):
-            self.( color, x, y)
-            if ( d < 0 ):
+            return
+        if ( a <= b ): # oct 7
+            d = a - 2*b
+            while ( y >= y1 ):
+                self.plot( color, x, y)
+                if ( d > 0 ):
+                    x += 1
+                    d += 2*a
                 y -= 1
                 d -= 2*b
-            x += 1
-            d += 2*a
-        return
-    if ( a <= b ): # oct 7
-        d = a - 2*b
-        while ( y >= y1 ):
-            self.plot( color, x, y)
-            if ( d > 0 ):
-                x += 1
-                d += 2*a
-            y -= 1
-            d -= 2*b
-        return
+            return
 
     ############################################################################
     # matrix
