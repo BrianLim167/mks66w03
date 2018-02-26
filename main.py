@@ -24,7 +24,7 @@ for i in range(360):
         color = [255,0,255-c]
     dx = int(length*math.cos(math.radians(i)))
     dy = int(length*math.sin(math.radians(i)))
-    draw_line(250,250, 250+dx,250+dy, screen, color)
+    screen.draw_line(250,250, 250+dx,250+dy, color)
 
 screen.display()
 screen.save_extension('img.png')

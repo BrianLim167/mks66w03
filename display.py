@@ -23,28 +23,28 @@ class PPMGrid(object):
             row = []
             self.screen.append( row )
             for x in range( width ):
-                self.screen[y].append( DEFAULT_COLOR[:] )
+                self.screen[y].append( PPMGrid.DEFAULT_COLOR[:] )
 
     def plot( self, color, x, y ):
-        newy = YRES - 1 - y
-        if ( x >= 0 and x < XRES and newy >= 0 and newy < YRES ):
+        newy = PPMGrid.YRES - 1 - y
+        if ( x >= 0 and x < PPMGrid.XRES and newy >= 0 and newy < PPMGrid.YRES ):
             self.screen[newy][x] = color[:]
 
     def clear( self ):
         for y in range( len(self.screen) ):
             for x in range( len(self.screen[y]) ):
-                self.screen[y][x] = DEFAULT_COLOR[:]
+                self.screen[y][x] = PPMGrid.DEFAULT_COLOR[:]
 
     def save_ppm( self, fname ):
         f = open( fname, 'w' )
-        ppm = 'P3\n' + str(len(self.screen[0])) +' '+ str(len(self.screen)) +' '+ str(MAX_COLOR) +'\n'
+        ppm = 'P3\n' + str(len(self.screen[0])) +' '+ str(len(self.screen)) +' '+ str(PPMGrid.MAX_COLOR) +'\n'
         for y in range( len(self.screen) ):
             row = ''
             for x in range( len(self.screen[y]) ):
                 pixel = self.screen[y][x]
-                row+= str( pixel[ RED ] ) + ' '
-                row+= str( pixel[ GREEN ] ) + ' '
-                row+= str( pixel[ BLUE ] ) + ' '
+                row+= str( pixel[ PPMGrid.RED ] ) + ' '
+                row+= str( pixel[ PPMGrid.GREEN ] ) + ' '
+                row+= str( pixel[ PPMGrid.BLUE ] ) + ' '
             ppm+= row + '\n'
         f.write( ppm )
         f.close()
