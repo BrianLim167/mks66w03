@@ -1,4 +1,5 @@
 from display import *
+from matrix import *
 import math
 
 screen = PPMGrid()
