@@ -120,13 +120,13 @@ class PPMGrid(object):
     # matrix
     ############################################################################
 
-    def draw_lines( matrix, screen, color ):
-        pass
-
-    def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
-        pass
-
-    def add_point( matrix, x, y, z=0 ):
-        pass
+    def draw_lines( self, matrix, color ):
+        for c in range(matrix.cols//2):
+            self.draw_line( matrix.matrix[c*2][0],
+                            matrix.matrix[c*2][1],
+                            matrix.matrix[c*2+1][0],
+                            matrix.matrix[c*2+1][1],
+                            color )
+                            
         
 
